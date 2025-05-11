@@ -717,6 +717,57 @@
                 cursor: pointer;
             }
         }
+
+        /* 聯絡資訊頁面響應式設計 */
+        @media (max-width: 768px) {
+            .contact-container {
+                padding: 0 1rem;
+            }
+
+            .contact-info {
+                padding: 1.5rem;
+            }
+
+            .contact-info > div {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-info ul {
+                margin-left: 1rem !important;
+            }
+
+            .contact-info li {
+                padding-left: 1.2rem !important;
+                text-indent: -1.2rem !important;
+            }
+
+            .contact-info li span {
+                left: 0 !important;
+            }
+
+            .contact-info li span:last-child {
+                margin-left: 0.3rem !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .contact-info {
+                padding: 1rem;
+            }
+
+            .contact-info h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .contact-info li {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1367,7 +1418,7 @@
                     </div>
                     <div>
                         <h3 style="color: #000; margin-bottom: 1rem;">營業時間</h3>
-                        <ul style="list-style: none; padding-left: 0; margin-left: 4rem;">
+                        <ul style="list-style: none; padding-left: 0; margin-left: 2rem;">
                             <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; color: #000; text-indent: -1.5rem; display: flex; align-items: center;">
                                 <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 
                                 <span style="margin-left: 0.5rem;"><strong>入住時間：</strong>15:00 - 21:00</span>
