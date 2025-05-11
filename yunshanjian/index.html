@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雲山間民宿 - 台東太麻里金針山住宿 | 山海景觀民宿</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="雲山間民宿位於台東太麻里金針山，提供舒適的山海景觀住宿體驗。擁有單床房和雙床房，配備現代化設施，讓您享受寧靜的度假時光。">
+    <meta name="keywords" content="台東民宿,太麻里住宿,金針山民宿,山海景觀,台東旅遊,太麻里景點">
+    <meta name="author" content="雲山間民宿">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="雲山間民宿 - 台東太麻里金針山住宿">
+    <meta property="og:description" content="享受壯觀的山海景觀，體驗舒適的住宿環境。位於台東太麻里金針山的特色民宿。">
+    <meta property="og:image" content="image/test.jpg">
+    <meta property="og:url" content="https://yunshan.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="雲山間民宿 - 台東太麻里金針山住宿">
+    <meta name="twitter:description" content="享受壯觀的山海景觀，體驗舒適的住宿環境。">
+    <meta name="twitter:image" content="image/test.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yunshan.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft JhengHei", sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 0.5rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 2rem;
+        }
+
+        .logo img {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-block;
+            padding: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .nav-links a i {
+            font-size: 1.2rem;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* 首頁樣式 */
+        .hero {
+            height: 80vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-item.active {
+            opacity: 1;
+        }
+
+        .carousel-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-control:hover {
+            background-color: rgba(255,255,255,0.5);
+        }
+
+        .carousel-control.prev {
+            left: 20px;
+        }
+
+        .carousel-control.next {
+            right: 20px;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-indicator.active {
+            background-color: white;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 5;
+            width: 80%;
+            max-width: 800px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .hero-content.active {
+            opacity: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #c0392b;
+        }
+
+        .features {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* 房型介紹頁面樣式 */
+        .page-title {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .rooms-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .room-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .room-card:hover {
+            transform: scale(1.02);
+        }
+
+        .room-image-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .room-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .room-image.active {
+            opacity: 1;
+        }
+
+        .room-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s;
+        }
+
+        .room-control:hover {
+            background-color: rgba(255,255,255,0.5);
+        }
+
+        .room-control.prev {
+            left: 10px;
+        }
+
+        .room-control.next {
+            right: 10px;
+        }
+
+        .room-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .room-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .room-indicator.active {
+            background-color: white;
+        }
+
+        .room-info h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .room-features {
+            margin: 1rem 0;
+        }
+
+        .room-features li {
+            list-style: none;
+            margin-bottom: 0.5rem;
+        }
+
+        .room-price {
+            font-size: 1.5rem;
+            color: #e74c3c;
+            margin: 1rem 0;
+        }
+
+        .book-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .book-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* 關於我們頁面樣式 */
+        .about-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .story-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .story-content h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-content p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .values-section {
+            background-color: #f8f9fa;
+            padding: 4rem 0;
+            margin: 2rem 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .value-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        /* 交通位置頁面樣式 */
+        .location-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .map-section {
+            margin-bottom: 4rem;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .transport-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .transport-card {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .transport-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .transport-card ul {
+            list-style: none;
+        }
+
+        .transport-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .transport-card li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+        }
+
+        .contact-info {
+            background-color: #2c3e50;
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .story-section, .room-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="image/logo.jpg" alt="雲山間民宿">
+            </div>
+            <div class="nav-links">
+                <a data-page="home">首頁</a>
+                <a data-page="rooms">房型介紹</a>
+                <a data-page="environment">環境介紹</a>
+                <a data-page="about">關於我們</a>
+                <a data-page="location">交通位置</a>
+                <a data-page="booking-info">訂房須知</a>
+                <a data-page="contact">聯絡預訂</a>
+                <a href="https://www.facebook.com/profile.php?id=61570378709414" target="_blank" style="margin-left: 1rem;"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/yunshanjian_/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://line.me/ti/p/9Foax1Orhh" target="_blank"><i class="fab fa-line"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 首頁 -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" style="background-image: url('image/view.jpg');">
+                    </div>
+                    <div class="carousel-item" style="background-image: url('image/view1.jpg');">
+                    </div>
+                    <div class="carousel-item" style="background-image: url('image/test.jpg');">
+                    </div>
+                    <div class="carousel-item" style="background-image: url('image/star1.jpg');">
+                    </div>
+                </div>
+                <div class="carousel-control prev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="carousel-control next">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="carousel-indicators">
+                    <div class="carousel-indicator active"></div>
+                    <div class="carousel-indicator"></div>
+                    <div class="carousel-indicator"></div>
+                    <div class="carousel-indicator"></div>
+                </div>
+            </div>
+            <div class="hero-content active">
+                <h1>享受寧靜的度假時光</h1>
+                <p>遠離城市喧囂，體驗自然與寧靜的完美結合</p>
+            </div>
+            <div class="hero-content">
+                <h1>金針山絕美風景</h1>
+                <p>坐擁山海景觀，欣賞日出的壯麗景色</p>
+            </div>
+            <div class="hero-content">
+                <h1>舒適溫馨的住宿環境</h1>
+                <p>精心打造的空間，讓您享受賓至如歸的感覺</p>
+            </div>
+            <div class="hero-content">
+                <h1>像畫一般的風景</h1>
+                <p>夜幕降臨，欣賞星空的美麗</p>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>我們的特色</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>優質住宿</h3>
+                    <p>精心打造的舒適空間，讓您享受賓至如歸的感覺</p>
+                </div>
+                <div class="feature-card">
+                    <h3>自然環境</h3>
+                    <p>被綠意環繞，享受清新空氣與美麗風景</p>
+                </div>
+                <div class="feature-card">
+                    <h3>便利位置</h3>
+                    <p>距離主要景點僅需短途車程</p>
+                </div>
+                <div class="feature-card">
+                    <h3>貼心服務</h3>
+                    <p>為您提供優質的住宿體驗</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 房型介紹頁面 -->
+    <div id="rooms" class="page">
+        <div class="page-title">
+            <h1>房型介紹</h1>
+        </div>
+
+        <div class="rooms-container">
+            <div class="room-card">
+                <div class="room-image-container">
+                    <img src="image/r11.jpg" alt="豪華雙人房" class="room-image active">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a" alt="豪華雙人房" class="room-image">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a" alt="豪華雙人房" class="room-image">
+                    <div class="room-control prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="room-control next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="room-indicators">
+                        <div class="room-indicator active"></div>
+                        <div class="room-indicator"></div>
+                        <div class="room-indicator"></div>
+                    </div>
+                </div>
+                <div class="room-info">
+                    <h2>雙人房</h2>
+                    <p>擁有壯觀的山海景，配備加大雙人床和乾溼分離的浴室。</p>
+                    <ul class="room-features">
+                        <li>✓ 1張加大雙人床</li>
+                        <li>✓ 獨立衛浴</li>
+                        <li>✓ 免費WiFi</li>
+                        <li>✓ 風扇</li>
+                        <li>✓ 電熱水壺</li>
+                        <li>✓ 除濕機</li>
+                        <li>✓ 電蚊拍</li>
+                    </ul>
+                    <div class="room-price">平日:NT$ 2,500 / 晚<br>假日:NT$ 3,000 / 晚</div>
+                    <!--<a class="book-button" data-page="contact">立即預訂</a>-->
+                </div>
+            </div>
+
+            <div class="room-card">
+                <div class="room-image-container">
+                    <img src="image/r21.jpg" alt="豪華雙人房" class="room-image active">
+                    <img src="image/r22.jpg" alt="豪華雙人房" class="room-image">
+                    <img src="image/r23.jpg" alt="豪華雙人房" class="room-image">
+                    <img src="image/r24.jpg" alt="豪華雙人房" class="room-image">
+                    <img src="image/r25.jpg" alt="豪華雙人房" class="room-image">
+                    <div class="room-control prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="room-control next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="room-indicators">
+                        <div class="room-indicator active"></div>
+                        <div class="room-indicator"></div>
+                        <div class="room-indicator"></div>
+                    </div>
+                </div>
+                <div class="room-info">
+                    <h2>雙人房</h2>
+                    <p>擁有壯觀的山海景，配備加大雙人床和乾溼分離的浴室。</p>
+                    <ul class="room-features">
+                        <li>✓ 1張加大雙人床</li>
+                        <li>✓ 獨立衛浴</li>
+                        <li>✓ 免費WiFi</li>
+                        <li>✓ 風扇</li>
+                        <li>✓ 電熱水壺</li>
+                        <li>✓ 除濕機</li>
+                        <li>✓ 電蚊拍</li>
+                    </ul>
+                    <div class="room-price">平日:NT$ 2,500 / 晚<br>假日:NT$ 3,000 / 晚</div>
+                    <!--<a class="book-button" data-page="contact">立即預訂</a>-->
+                </div>
+            </div>
+
+            <div class="room-card">
+                <div class="room-image-container">
+                    <img src="image/r31.jpg" alt="豪華雙人房" class="room-image active">
+                    <img src="image/r32.jpg" alt="豪華雙人房" class="room-image">
+                    <img src="image/r33.jpg" alt="豪華雙人房" class="room-image">
+                    <img src="image/r34.jpg" alt="豪華雙人房" class="room-image">
+                    <img src="image/r35.jpg" alt="豪華雙人房" class="room-image">
+                    <img src="image/r36.jpg" alt="豪華雙人房" class="room-image">
+                    <div class="room-control prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="room-control next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="room-indicators">
+                        <div class="room-indicator active"></div>
+                        <div class="room-indicator"></div>
+                        <div class="room-indicator"></div>
+                    </div>
+                </div>
+                <div class="room-info">
+                    <h2>雙人房</h2>
+                    <p>擁有壯觀的山海景，配備標準雙人床和乾溼分離的浴室。</p>
+                    <ul class="room-features">
+                        <li>✓ 1張標準雙人床</li>
+                        <li>✓ 獨立衛浴</li>
+                        <li>✓ 免費WiFi</li>
+                        <li>✓ 風扇</li>
+                        <li>✓ 電熱水壺</li>
+                        <li>✓ 除濕機</li>
+                        <li>✓ 電蚊拍</li>
+                    </ul>
+                    <div class="room-price">平日:NT$ 2,500 / 晚<br>假日:NT$ 3,000 / 晚</div>
+                    <!--<a class="book-button" data-page="contact">立即預訂</a>-->
+                </div>
+            </div>
+
+            <!-- 新增房型：四人套房 -->
+            <div class="room-card">
+                <div class="room-image-container">
+                    <img src="image/r41.jpg" alt="豪華雙人房" class="room-image active">
+                    <img src="image/r42.jpg" alt="豪華雙人房" class="room-image">
+                    <img src="image/r43.jpg" alt="豪華雙人房" class="room-image">
+                    <img src="image/r44.jpg" alt="豪華雙人房" class="room-image">
+                    <img src="image/r45.jpg" alt="豪華雙人房" class="room-image">
+                    <div class="room-control prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="room-control next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="room-indicators">
+                        <div class="room-indicator active"></div>
+                        <div class="room-indicator"></div>
+                        <div class="room-indicator"></div>
+                    </div>
+                </div>
+                <div class="room-info">
+                    <h2>四人房</h2>
+                    <p>擁有壯觀的山海景，配備兩張加大雙人床和乾溼分離的浴室。</p>
+                    <ul class="room-features">
+                        <li>✓ 2張加大雙人床</li>
+                        <li>✓ 獨立衛浴</li>
+                        <li>✓ 免費WiFi</li>
+                        <li>✓ 風扇</li>
+                        <li>✓ 電熱水壺</li>
+                        <li>✓ 除濕機</li>
+                        <li>✓ 電蚊拍</li>
+                    </ul>
+                    <div class="room-price">平日:NT$ 3,500 / 晚<br>假日:NT$ 4,000 / 晚</div>
+                    <!--<a class="book-button" data-page="contact">立即預訂</a>-->
+                </div>
+            </div>
+
+            <!-- 新增房型：六人家庭房 -->
+            <div class="room-card">
+                <div class="room-image-container">
+                    <img src="image/r51.jpg" alt="豪華雙人房" class="room-image active">
+                    <img src="image/r52.jpg" alt="豪華雙人房" class="room-image">
+                    <img src="image/r53.jpg" alt="豪華雙人房" class="room-image">
+                    <img src="image/r54.jpg" alt="豪華雙人房" class="room-image">
+                    <img src="image/r55.jpg" alt="豪華雙人房" class="room-image">
+                    <div class="room-control prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="room-control next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="room-indicators">
+                        <div class="room-indicator active"></div>
+                        <div class="room-indicator"></div>
+                        <div class="room-indicator"></div>
+                    </div>
+                </div>
+                <div class="room-info">
+                    <h2>四人房</h2>
+                    <p>配備兩張標準雙人床和乾溼分離的浴室。</p>
+                    <ul class="room-features">
+                        <li>✓ 2張標準雙人床</li>
+                        <li>✓ 獨立衛浴</li>
+                        <li>✓ 免費WiFi</li>
+                        <li>✓ 風扇</li>
+                        <li>✓ 電熱水壺</li>
+                        <li>✓ 除濕機</li>
+                        <li>✓ 電蚊拍</li>
+                    </ul>
+                    <div class="room-price">平日:NT$ 3,500 / 晚<br>假日:NT$ 4,000 / 晚</div>
+                    <!--<a class="book-button" data-page="contact">立即預訂</a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 環境介紹頁面 -->
+    <div id="environment" class="page">
+        <div class="page-title">
+            <h1>環境介紹</h1>
+        </div>
+
+        <div class="environment-container" style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem;">
+            <section class="environment-section" style="margin-bottom: 4rem;">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">金針山景觀</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+                    <div>
+                        <p style="margin-bottom: 1rem;">金針山位於台東太麻里，海拔約800公尺，是台灣著名的金針花產地。每年8月至9月間，整片山頭被金黃色的金針花海覆蓋，形成壯觀的自然景觀。</p>
+                        <p style="margin-bottom: 1rem;">除了金針花季外，這裡四季都有不同的自然風光。春季有櫻花綻放，夏季綠意盎然，秋季有楓紅點綴，冬季則有雲海繚繞。</p>
+                        <p>從民宿的觀景台可以欣賞到太平洋的壯麗景色，日出時分，陽光灑在海面上，形成一幅令人屏息的美景。</p>
+                    </div>
+                    <div style="position: relative; height: 300px; overflow: hidden; border-radius: 10px;">
+                        <img src="image/view.jpg" alt="金針山景觀" class="environment-image active" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 0.5s ease-in-out;">
+                        <img src="image/view1.jpg" alt="金針山景觀" class="environment-image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease-in-out;">
+                        <img src="image/test.jpg" alt="金針山景觀" class="environment-image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease-in-out;">
+                        <div class="environment-control prev" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); width: 40px; height: 40px; background-color: rgba(255,255,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; cursor: pointer; transition: background-color 0.3s; z-index: 10;">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="environment-control next" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); width: 40px; height: 40px; background-color: rgba(255,255,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; cursor: pointer; transition: background-color 0.3s; z-index: 10;">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="environment-indicators" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10;">
+                            <div class="environment-indicator active" style="width: 10px; height: 10px; border-radius: 50%; background-color: rgba(255,255,255,0.5); cursor: pointer; transition: background-color 0.3s;"></div>
+                            <div class="environment-indicator" style="width: 10px; height: 10px; border-radius: 50%; background-color: rgba(255,255,255,0.5); cursor: pointer; transition: background-color 0.3s;"></div>
+                            <div class="environment-indicator" style="width: 10px; height: 10px; border-radius: 50%; background-color: rgba(255,255,255,0.5); cursor: pointer; transition: background-color 0.3s;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="facilities-section" style="margin-bottom: 4rem;">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">民宿設施</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div style="background-color: #f8f9fa; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <h3 style="color: #2c3e50; margin-bottom: 1rem;">公共空間</h3>
+                        <ul style="list-style: none;">
+                            <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">✓</span> 觀景露台
+                            </li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">✓</span> 交誼廳
+                            </li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">✓</span> 戶外休憩區
+                            </li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">✓</span> 餐廳
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="background-color: #f8f9fa; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <h3 style="color: #2c3e50; margin-bottom: 1rem;">休閒設施</h3>
+                        <ul style="list-style: none;">
+                            <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">✓</span> 打卡景點
+                            </li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">✓</span> 烤肉區
+                            </li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">✓</span> 泡茶區
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="background-color: #f8f9fa; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <h3 style="color: #2c3e50; margin-bottom: 1rem;">餐飲服務</h3>
+                        <ul style="list-style: none;">
+                            <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">✓</span> 早餐
+                            </li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">✓</span> 不定時特色料理
+                            </li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">✓</span> 晚餐
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="surroundings-section">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">周邊景點</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div style="background-color: #f8f9fa; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <h3 style="color: #2c3e50; margin-bottom: 1rem;">雙乳峰</h3>
+                        <p style="margin-bottom: 1rem;">金針山制高點，小百岳之一，距離民宿步行約50分鐘，每年8月至9月間，整片山頭被金黃色的金針花海覆蓋。</p>
+                    </div>
+                    <div style="background-color: #f8f9fa; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <h3 style="color: #2c3e50; margin-bottom: 1rem;">忘憂谷</h3>
+                        <p style="margin-bottom: 1rem;">距離民宿步行約25分鐘，金針花開時，金針花花海有如花毯般的夢幻。</p>
+                    </div>
+                    <!--<div style="background-color: #f8f9fa; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <h3 style="color: #2c3e50; margin-bottom: 1rem;">石頭屋</h3>
+                        <p style="margin-bottom: 1rem;">距離民宿車程30分鐘，是台灣最美的車站之一，位於懸崖上，可以欣賞到太平洋的壯麗景色。</p>
+                        <p>這裡是觀賞日出的絕佳地點，每年吸引許多攝影愛好者前來取景。</p>
+                    </div>-->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- 訂房須知頁面 -->
+    <div id="booking-info" class="page">
+        <div class="page-title">
+            <h1>訂房須知</h1>
+        </div>
+
+        <div class="booking-info-container" style="max-width: 1000px; margin: 2rem auto; padding: 0 1rem;">
+            <section class="booking-rules" style="background-color: #f8f9fa; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 3rem;">
+                <h2 style="color: #2c3e50; margin-bottom: 1.5rem;">訂房注意事項</h2>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 入住時間：下午3:00後，退房時間：上午11:00前。
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 請於入住時出示身分證件，以便辦理入住手續。
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 為響應環保並配合政府政策，民宿不提供一次性使用盥洗用具，請自備個人盥洗用品或可向櫃檯購買。
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 入住房客均享有免費早餐,每間房間均有免費Wi-Fi。
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 請愛惜民宿內相關設施，如有任何損毀或擅自帶走任何物品，民宿將依規定向房客照價索賠。
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 為維護住宿品質，除規定區域外，民宿全面禁止吸菸，違者將依法檢舉，由司法機關予以處分。
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 為維護住宿品質，請依房型人數進住，如需加人請事先告知，加床為一人NT$800元。
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 為維護住宿品質，客房內請勿大聲喧嘩，並於晚上10點後請降低音量。
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 未經允許嚴禁於民宿內使用火源，並禁止於房間內進行煮食之行為。
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 民宿內嚴禁任何非法行為（如打架、賭博等）、或攜帶任何違禁品（毒藥、危險物品等），如發現即報警處理。
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 退房時，除確實將個人用品帶走，並應繳回房卡及鑰匙，如有遺失應支付NT$300元。
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 本場所如有張貼『禁止進入』標語，請各位住客勿隨意進入。
+                    </li>                
+                </ul>
+            </section>
+
+            <section class="cancellation-policy" style="background-color: #f8f9fa; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 3rem;">
+                <h2 style="color: #2c3e50; margin-bottom: 1.5rem;">寵物友善</h2>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 如有攜帶寵物入住者，入住當日每房將收取保證金NT$1000元，退房時，房間若有髒汙(床被單有寵物痕跡或隨意大小便)或設備造成破壞，將由保證金扣除相應的金額，若破壞程度超過保證金金額，將會額外申請賠償，若無任何破壞或損失，將全額退還保證金。
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 每房最多2隻寵物入住，需於訂房告知，若有與入住當日數量不同者，本民宿有權拒絕入住。
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 為維護住宿品質，每隻寵物將收取NT$300元清潔費(本民宿不提供寵物用品)
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 請確認您的寵物已施打基本疫苗，且無跳蚤、傳染病或任意攻擊性行為。
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 請勿讓寵物上床或使用民宿的枕頭、棉被（請自行攜帶寵物墊/床）。
+                    </li>
+                </ul>
+            </section>
+
+            <section class="cancellation-policy" style="background-color: #f8f9fa; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 3rem;">
+                <h2 style="color: #2c3e50; margin-bottom: 1.5rem;">取消政策</h2>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 入住前7天取消訂房，訂金扣除手續費NT$100元後之餘額將全額退款
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 入住前3-6天取消訂房，退還已付訂金40%
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 入住前1-2天取消訂房，退還已付訂金20%
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 入住當天取消或未入住者，將不退還訂金
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 如遇天災等不可抗力因素(以當地縣市政府宣布為準)，可以選擇退還訂金(訂金扣除手續費NT$100元後餘額將全額退款)或保留3個月。房客須於住宿前一日中午12點提出，逾時將不予受理。
+                    </li>
+                </ul>
+            </section>
+
+            <section class="payment-info" style="background-color: #f8f9fa; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 3rem;">
+                <h2 style="color: #2c3e50; margin-bottom: 1.5rem;">付款方式</h2>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 信用卡支付
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 匯款支付
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 現金支付
+                    </li>
+                </ul>
+                <p style="margin-top: 1rem;">訂房時需於3天內支付50%訂金，餘款於入住時付清。</p>
+            </section>
+
+            <!--<section class="faq" style="background-color: #f8f9fa; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <h2 style="color: #2c3e50; margin-bottom: 1.5rem;">常見問題</h2>
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: #2c3e50; margin-bottom: 0.5rem;">可以帶寵物入住嗎？</h3>
+                    <p>為維護住宿環境，本民宿不允許攜帶寵物入住。</p>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: #2c3e50; margin-bottom: 0.5rem;">有提供早餐嗎？</h3>
+                    <p>是的，我們提供在地特色早餐，供應時間為上午7:00至9:30。</p>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: #2c3e50; margin-bottom: 0.5rem;">有提供接送服務嗎？</h3>
+                    <p>是的，我們提供太麻里車站接送服務，需提前預約，費用另計。</p>
+                </div>
+                <div>
+                    <h3 style="color: #2c3e50; margin-bottom: 0.5rem;">有提供停車場嗎？</h3>
+                    <p>是的，我們提供免費停車場，可停放汽車及機車。</p>
+                </div>
+            </section>-->
+        </div>
+    </div>
+
+    <!-- 關於我們頁面 -->
+    <div id="about" class="page">
+        <div class="page-title">
+            <h1>關於我們</h1>
+        </div>
+
+        <div class="about-container">
+            <section class="story-section">
+                <img src="image/door1.jpg" alt="雲山間民宿外觀" class="story-image">
+                <div class="story-content">
+                    <h2>我們的故事</h2>
+                    <p>雲山間民宿始於2024年，源自於一個簡單的想法 —— 在這片寧靜的土地上，為旅人打造一個溫暖的家。</p>
+                    <p>我們精心挑選了這片寧靜的地段，遠離城市的喧囂，讓每位住客都能享受到大自然的寧靜與美好。在這裡，您可以放慢腳步，享受生活的點滴。</p>
+                    <p>我們相信，旅行不僅是觀光，更是一種生活體驗。因此，我們致力於為每位旅客提供最舒適的住宿環境和服務。</p>
+                </div>
+            </section>
+        </div>
+
+        <section class="values-section">
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>舒適體驗</h3>
+                    <p>我們注重每個細節，從床具選擇到空間布置，都以住客的舒適為優先考量。</p>
+                </div>
+                <div class="value-card">
+                    <h3>環保永續</h3>
+                    <p>為響應環保，我們不提供一次性用品，為地球盡一份心力。</p>
+                </div>
+                <div class="value-card">
+                    <h3>在地連結</h3>
+                    <p>與在地小農合作，為住客提供當季食材與在地體驗。</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 交通位置頁面 -->
+    <div id="location" class="page">
+        <div class="page-title">
+            <h1>交通位置</h1>
+        </div>
+
+        <div class="location-container">
+            <section class="map-section">
+                <div class="map-container">
+                    <!-- 更新為台東縣太麻里鄉295號的Google Maps嵌入代碼 -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.2139895745163!2d120.95766667514778!3d22.645808830283475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346fcd00165ae351%3A0xdb49adf172735019!2z6Zuy5bGx6ZaT!5e0!3m2!1szh-TW!2stw!4v1744205899583!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </section>
+
+            <section class="transport-section">
+                <div class="transport-card">
+                    <h3>開車前往</h3>
+                    <ul>
+                        <li>台9線 → 太麻里 → 金針山產業道路 → 雲山間民宿</li>
+                        <li>停車場提供免費停車服務</li>
+                    </ul>
+                </div>
+
+                <div class="transport-card">
+                    <h3>大眾運輸</h3>
+                    <ul>
+                        <li>搭乘台鐵至太麻里站下車</li>
+                        <li>搭乘計程車前往</li>
+                    </ul>
+                </div>
+
+                <div class="transport-card">
+                    <h3>附近景點</h3>
+                    <ul>
+                        <li>雙乳峰（步行約50分鐘）</li>
+                        <li>忘憂谷（步行約25分鐘）</li>
+                        <li>環山雅築（步行約3分鐘）</li>
+                        <li>石頭屋（步行約30分鐘）</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="contact-info">
+                <h2>聯絡資訊</h2>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <h3>地址</h3>
+                        <p>台東縣太麻里鄉大王村佳崙295號</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>電話</h3>
+                        <p>089-781-727</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <p>contact@yunshan.com</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- 聯絡資訊頁面 -->
+    <div id="contact" class="page">
+        <div class="page-title">
+            <h1>聯絡資訊</h1>
+        </div>
+        
+        <div class="contact-container" style="max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
+            <div class="contact-info" style="background-color: #f8f9fa; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #000;">聯絡方式</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <h3 style="color: #000; margin-bottom: 1rem;">基本資訊</h3>
+                        <ul style="list-style: none; padding-left: 0; margin-left: 2rem;">
+                            <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; color: #000; text-indent: -1.5rem; display: flex; align-items: center;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 
+                                <span style="margin-left: 0.5rem;"><strong>地址：</strong>台東縣太麻里鄉大王村佳崙295號</span>
+                            </li>
+                            <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; color: #000; text-indent: -1.5rem; display: flex; align-items: center;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 
+                                <span style="margin-left: 0.5rem;"><strong>電話：</strong>089-781-727</span>
+                            </li>
+                            <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; color: #000; text-indent: -1.5rem; display: flex; align-items: center;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 
+                                <span style="margin-left: 0.5rem;"><strong>Email：</strong>contact@yunshan.com</span>
+                            </li>
+                            <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; color: #000; text-indent: -1.5rem; display: flex; align-items: center;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 
+                                <span style="margin-left: 0.5rem;"><strong>Line ID：</strong>yunshanjian</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: #000; margin-bottom: 1rem;">營業時間</h3>
+                        <ul style="list-style: none; padding-left: 0; margin-left: 4rem;">
+                            <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; color: #000; text-indent: -1.5rem; display: flex; align-items: center;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 
+                                <span style="margin-left: 0.5rem;"><strong>入住時間：</strong>15:00 - 21:00</span>
+                            </li>
+                            <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; color: #000; text-indent: -1.5rem; display: flex; align-items: center;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 
+                                <span style="margin-left: 0.5rem;"><strong>退房時間：</strong>11:00前</span>
+                            </li>
+                            <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; color: #000; text-indent: -1.5rem; display: flex; align-items: center;">
+                                <span style="position: absolute; left: 0; color: #e74c3c;">•</span> 
+                                <span style="margin-left: 0.5rem;"><strong>櫃台服務：</strong>08:00 - 21:00</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem; text-align: center;">
+                    <h3 style="color: #000; margin-bottom: 1rem;">社群媒體</h3>
+                    <div style="display: flex; justify-content: center; gap: 1rem;">
+                        <a href="https://www.facebook.com/profile.php?id=61570378709414" target="_blank" style="color: #000; font-size: 1.5rem;">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/yunshanjian_/" target="_blank" style="color: #000; font-size: 1.5rem;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://line.me/ti/p/9Foax1Orhh" target="_blank" style="color: #000; font-size: 1.5rem;">
+                            <i class="fab fa-line"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 雲山間民宿 版權所有</p>
+    </footer>
+
+    <script>
+        // 頁面切換功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a[data-page]');
+            const pages = document.querySelectorAll('.page');
+            
+            // 為所有導航鏈接添加點擊事件
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetPage = this.getAttribute('data-page');
+                    if (targetPage) {
+                        // 隱藏所有頁面
+                        pages.forEach(page => {
+                            page.classList.remove('active');
+                        });
+                        
+                        // 顯示目標頁面
+                        document.getElementById(targetPage).classList.add('active');
+                        
+                        // 滾動到頁面頂部
+                        window.scrollTo(0, 0);
+                    }
+                });
+            });
+            
+            // 表單提交處理
+            const bookingForm = document.getElementById('booking-form');
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('感謝您的預訂！我們將盡快與您聯繫確認。');
+                    this.reset();
+                });
+            }
+
+            // 輪播圖功能
+            const carousel = document.querySelector('.carousel');
+            if (carousel) {
+                const items = carousel.querySelectorAll('.carousel-item');
+                const contents = document.querySelectorAll('.hero-content');
+                const indicators = carousel.querySelectorAll('.carousel-indicator');
+                const prevBtn = carousel.querySelector('.carousel-control.prev');
+                const nextBtn = carousel.querySelector('.carousel-control.next');
+                let currentIndex = 0;
+                let interval;
+
+                // 切換輪播圖
+                function showSlide(index) {
+                    items.forEach(item => item.classList.remove('active'));
+                    contents.forEach(content => content.classList.remove('active'));
+                    indicators.forEach(indicator => indicator.classList.remove('active'));
+                    
+                    currentIndex = (index + items.length) % items.length;
+                    
+                    items[currentIndex].classList.add('active');
+                    contents[currentIndex].classList.add('active');
+                    indicators[currentIndex].classList.add('active');
+                }
+
+                // 下一張
+                function nextSlide() {
+                    showSlide(currentIndex + 1);
+                }
+
+                // 上一張
+                function prevSlide() {
+                    showSlide(currentIndex - 1);
+                }
+
+                // 自動播放
+                function startAutoPlay() {
+                    interval = setInterval(nextSlide, 5000);
+                }
+
+                // 停止自動播放
+                function stopAutoPlay() {
+                    clearInterval(interval);
+                }
+
+                // 添加事件監聽器
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    stopAutoPlay();
+                    startAutoPlay();
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    stopAutoPlay();
+                    startAutoPlay();
+                });
+
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        showSlide(index);
+                        stopAutoPlay();
+                        startAutoPlay();
+                    });
+                });
+
+                // 滑鼠懸停時停止自動播放
+                carousel.addEventListener('mouseenter', stopAutoPlay);
+                carousel.addEventListener('mouseleave', startAutoPlay);
+
+                // 開始自動播放
+                startAutoPlay();
+            }
+
+            // 房型圖片輪播功能
+            const roomImageContainers = document.querySelectorAll('.room-image-container');
+            roomImageContainers.forEach(container => {
+                const images = container.querySelectorAll('.room-image');
+                const indicators = container.querySelectorAll('.room-indicator');
+                const prevBtn = container.querySelector('.room-control.prev');
+                const nextBtn = container.querySelector('.room-control.next');
+                let currentIndex = 0;
+                let interval;
+
+                // 切換房型圖片
+                function showRoomImage(index) {
+                    images.forEach(img => img.classList.remove('active'));
+                    indicators.forEach(indicator => indicator.classList.remove('active'));
+                    
+                    currentIndex = (index + images.length) % images.length;
+                    
+                    images[currentIndex].classList.add('active');
+                    indicators[currentIndex].classList.add('active');
+                }
+
+                // 下一張
+                function nextRoomImage() {
+                    showRoomImage(currentIndex + 1);
+                }
+
+                // 上一張
+                function prevRoomImage() {
+                    showRoomImage(currentIndex - 1);
+                }
+
+                // 自動播放
+                function startRoomAutoPlay() {
+                    interval = setInterval(nextRoomImage, 4000);
+                }
+
+                // 停止自動播放
+                function stopRoomAutoPlay() {
+                    clearInterval(interval);
+                }
+
+                // 添加事件監聽器
+                prevBtn.addEventListener('click', () => {
+                    prevRoomImage();
+                    stopRoomAutoPlay();
+                    startRoomAutoPlay();
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    nextRoomImage();
+                    stopRoomAutoPlay();
+                    startRoomAutoPlay();
+                });
+
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        showRoomImage(index);
+                        stopRoomAutoPlay();
+                        startRoomAutoPlay();
+                    });
+                });
+
+                // 滑鼠懸停時停止自動播放
+                container.addEventListener('mouseenter', stopRoomAutoPlay);
+                container.addEventListener('mouseleave', startRoomAutoPlay);
+
+                // 開始自動播放
+                startRoomAutoPlay();
+            });
+
+            // 環境介紹圖片輪播功能
+            const environmentImageContainers = document.querySelectorAll('.environment-section');
+            environmentImageContainers.forEach(container => {
+                const images = container.querySelectorAll('.environment-image');
+                const indicators = container.querySelectorAll('.environment-indicator');
+                const prevBtn = container.querySelector('.environment-control.prev');
+                const nextBtn = container.querySelector('.environment-control.next');
+                let currentIndex = 0;
+                let interval;
+
+                // 切換環境圖片
+                function showEnvironmentImage(index) {
+                    images.forEach(img => img.classList.remove('active'));
+                    indicators.forEach(indicator => indicator.classList.remove('active'));
+                    
+                    currentIndex = (index + images.length) % images.length;
+                    
+                    images[currentIndex].classList.add('active');
+                    indicators[currentIndex].classList.add('active');
+                }
+
+                // 下一張
+                function nextEnvironmentImage() {
+                    showEnvironmentImage(currentIndex + 1);
+                }
+
+                // 上一張
+                function prevEnvironmentImage() {
+                    showEnvironmentImage(currentIndex - 1);
+                }
+
+                // 自動播放
+                function startEnvironmentAutoPlay() {
+                    interval = setInterval(nextEnvironmentImage, 4000);
+                }
+
+                // 停止自動播放
+                function stopEnvironmentAutoPlay() {
+                    clearInterval(interval);
+                }
+
+                // 添加事件監聽器
+                prevBtn.addEventListener('click', () => {
+                    prevEnvironmentImage();
+                    stopEnvironmentAutoPlay();
+                    startEnvironmentAutoPlay();
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    nextEnvironmentImage();
+                    stopEnvironmentAutoPlay();
+                    startEnvironmentAutoPlay();
+                });
+
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        showEnvironmentImage(index);
+                        stopEnvironmentAutoPlay();
+                        startEnvironmentAutoPlay();
+                    });
+                });
+
+                // 滑鼠懸停時停止自動播放
+                container.addEventListener('mouseenter', stopEnvironmentAutoPlay);
+                container.addEventListener('mouseleave', startEnvironmentAutoPlay);
+
+                // 開始自動播放
+                startEnvironmentAutoPlay();
+            });
+        });
+
+        // 環境介紹輪播功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.environment-image');
+            const indicators = document.querySelectorAll('.environment-indicator');
+            const prevBtn = document.querySelector('.environment-control.prev');
+            const nextBtn = document.querySelector('.environment-control.next');
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                images.forEach((img, index) => {
+                    img.style.opacity = index === currentIndex ? '1' : '0';
+                });
+                indicators.forEach((indicator, index) => {
+                    indicator.style.backgroundColor = index === currentIndex ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.5)';
+                });
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateCarousel();
+            }
+
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+
+            // 自動輪播
+            let autoSlide = setInterval(nextSlide, 5000);
+
+            // 當滑鼠懸停時暫停自動輪播
+            const carouselContainer = document.querySelector('.environment-section .environment-image').parentElement;
+            carouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoSlide);
+            });
+
+            carouselContainer.addEventListener('mouseleave', () => {
+                autoSlide = setInterval(nextSlide, 5000);
+            });
+        });
+    </script>
+</body>
+</html> 
