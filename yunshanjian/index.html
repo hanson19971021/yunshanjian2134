@@ -561,17 +561,160 @@
         }
 
         /* 響應式設計 */
-        @media (max-width: 768px) {
+        @media (max-width: 1200px) {
+            .rooms-container, .about-container, .location-container, .environment-container {
+                padding: 0 2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
             .story-section, .room-card {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
-            
+
+            .story-image {
+                height: 300px;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .transport-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.5rem 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo {
+                margin: 0 0 1rem 0;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                padding: 0.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
             .values-grid {
                 grid-template-columns: 1fr;
             }
-            
+
+            .transport-section {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-details {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .room-image-container {
+                height: 300px;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+
+            .room-card {
+                padding: 1rem;
+            }
+
+            .room-info h2 {
+                font-size: 1.5rem;
+            }
+
+            .room-price {
+                font-size: 1.2rem;
+            }
+
+            .contact-container {
+                padding: 0 1rem;
+            }
+
+            .contact-info {
+                padding: 1.5rem;
+            }
+
+            .carousel-control {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .room-control {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+        }
+
+        /* 手機版導航選單 */
+        @media (max-width: 768px) {
             .nav-links {
-                gap: 1rem;
+                display: none;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 1rem;
+                top: 1rem;
+                font-size: 1.5rem;
+                color: white;
+                cursor: pointer;
             }
         }
     </style>
@@ -581,6 +724,9 @@
         <nav>
             <div class="logo">
                 <img src="image/logo.jpg" alt="雲山間民宿">
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
             </div>
             <div class="nav-links">
                 <a data-page="home">首頁</a>
@@ -1559,6 +1705,27 @@
                 autoSlide = setInterval(nextSlide, 5000);
             });
         });
+
+        // 手機版選單切換
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // 點擊導航連結後關閉選單
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+        });
     </script>
 </body>
+</html> 
 </html> 
